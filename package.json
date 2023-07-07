@@ -1,0 +1,17 @@
+{
+  "name": "docsify-plugin-treemenu",
+  "version": "1.0.0",
+  "description": "Docsify plugin to display tree menu in sidebar",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "csso -i ./src/styles.css -o ./dist/plugin-treemenu.min.css",
+    "build-js": "uglifyjs ./src/index.js -c -m -o ./dist/plugin-treemenu.min.js",
+    "build": "npm run build-css && npm run build-js"
+  },
+  "author": "Agus Santoso",
+  "license": "ISC",
+  "devDependencies": {
+    "csso-cli": "^4.0.2",
+    "uglify-js": "^3.17.4"
+  }
+}
