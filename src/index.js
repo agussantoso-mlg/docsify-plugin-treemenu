@@ -1,6 +1,19 @@
 window.$docsify = window.$docsify || {};
 window.$docsify.plugins = [
   function (hook, vm) {
+    let menuItems = []
+    function updateMenuState() {
+      let hash = location.hash
+      for (var i = 0; i < menuItems.length; i++) {
+        if (menuItems[i].getAttribute("href") == hash) {
+          if (!menuItems[i].classList.contains("active")) menuItems[i].classList.add("active")
+        }
+        else {
+          if (menuItems[i].classList.contains("active")) menuItems[i].classList.remove("active")
+        }
+      }
+    }
+    
     hook.afterEach(updateMenuState)
     hook.mounted(function () {
       let tag = function (tagName, parentNode) {
