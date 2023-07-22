@@ -46,10 +46,17 @@ window.$docsify.plugins = [
 
         a[1].innerText = item[0]
         if (item[1]) {
-          a[1].setAttribute("href", `#/${item[1]}`)
-          menuItems.push(a[1])
-          a[1].onclick = updateMenuState
-          a[1].classList.add('menu-item')
+          if (item[1].match(/https?\:\/\//)) {
+            a[1].setAttribute("href", item[1])
+            a[1].target = "_blank"
+            menuItems.push(a[1])
+          }
+          else {
+            a[1].setAttribute("href", `#/${item[1].replace(/^\/+/, '')}`)
+            menuItems.push(a[1])
+            a[1].onclick = updateMenuState
+            a[1].classList.add('menu-item')
+          }
         }
         else {
           a[1].classList.add('disabled')
